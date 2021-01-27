@@ -1,0 +1,309 @@
+/*Começo do global*/
+*{
+    list-style: none;
+    text-decoration: none;
+}
+
+body, ul, li p   {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    text-align: center;
+    margin: 10px;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+a{
+    color: white;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+td{
+    color: blueviolet;
+}
+/*Fim global*/
+
+/* Incio form*/
+
+form{
+    width: 90%;
+    max-width: 1690px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background: #ccc;
+}
+
+form label,input,select, button{
+    max-width: 310px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+form > div:nth-child(1){
+    display: grid;
+    grid-template-columns: 100px 100px;
+    justify-content: center;
+}
+
+form > div:nth-child(2){
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+form textarea{
+    max-width: 700px;
+    max-height: 700px;
+    width: 90%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+form #submit{
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background: blanchedalmond;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 6px;
+    border: none;
+    
+}
+
+/* Fim form*/
+
+/* Inicio  Flex das img */
+.grid1{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1690px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    gap: 20px;
+    padding: 10px;
+}
+
+/*conversando com a div dentro do GRID1*/
+/*Primeria forma escolhendo a div diretamente*/
+/* .grid1 > div:nth-child(1){
+    background: blue;
+}
+ */
+ .grid1 > div:nth-child(1){
+     grid-column: 1;
+     grid-row:  1 / 2;
+  
+}
+    
+    
+/*Segunda forma dizendo que apartir de tal div ele vai fazer algo*/
+.grid1 > div:nth-child(2){
+    display: grid;
+    grid-template-columns: 60%;
+    grid-column: 3;
+    grid-row: 1;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.grid1 > div:nth-child(3){
+    display: grid;
+    grid-template-columns: 60%;
+    grid-column: 2;
+    grid-row: 1;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Inicio Home Btn*/
+
+.menu_1{
+    background: wheat;
+    max-width: 1690px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.menu_1 ul li{
+    background: cornflowerblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.menu_1 ul li a{
+    width: 140px;
+    line-height: 40px;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 6px;
+    color: black;
+
+}
+
+.a_pagina {
+    background: chocolate;
+    margin-left: 80px;
+    margin-top: 20px;
+    max-width: 80px;
+    width: 98%;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    padding: 10px;
+
+}
+
+
+/* Fim Home Btn*/
+
+/* Incio Area */
+.area{
+    max-width: 1690px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ccc;
+}
+
+.area > div img:nth-child(1){
+    max-width: 510px;
+    width: 80%;
+    height: 90%;
+    margin-left: 50px;
+}
+
+.area p#scroll{
+    max-width: 700px;
+    max-height: 500px;
+    width: 80%;
+    height: 90%;
+    overflow: scroll;
+  
+}
+/* Fim Area */
+
+/* Incio Footer */
+
+footer{
+    max-width: 1710px;
+    display: block;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    background: #1d1e20;
+    color: white;
+    margin-top: 90px;
+    line-height: 80px;
+}
+
+#footer p{
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* Footer*/
+
+
+/* Inicio media query*/
+
+@media(max-width: 1296px) {
+    .grid1{
+        padding: 10px;
+    }
+}
+
+@media(max-width: 880px){
+    .grid1{
+        display: block;
+        padding: 10px;
+    }
+
+    .grid1 > div{
+        margin: 10px;
+    }
+    
+    /* Incio Area */
+.area{
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr ;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 10px;
+    background: #ccc;
+}
+
+.area > div img:nth-child(1){
+    max-width: 510px;
+    width: 80%;
+    height: 90%;
+    margin-right: 10px;
+    margin: 0 auto;
+}
+
+.area textarea{
+    max-width: 700px;
+    max-height: 500px;
+    width: 80%;
+    height: 400px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+    
+}
+
+@media(max-width: 680px){
+    .menu_1{
+        width: 95%;
+    }
+    .menu-1{
+        display: block;
+        width: 90%;
+    }
+
+    .menu-1 li{
+        width: 95%;
+        margin-top: 10px;
+    }
+    .menu-1 li a{
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Fim media query*/

@@ -1,0 +1,162 @@
+   // verifica se foi enviado um arquivo
+if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
+    
+    /*  Informações da fot que foi Inserida*/
+    /* echo 'Você enviou o arquivo: <strong>' . $_FILES[ 'arquivo' ][ 'name' ] . '</strong><br />';
+    echo 'Este arquivo é do tipo: <strong > ' . $_FILES[ 'arquivo' ][ 'type' ] . ' </strong ><br />';
+    echo 'Temporáriamente foi salvo em: <strong>' . $_FILES[ 'arquivo' ][ 'tmp_name' ] . '</strong><br />';
+    echo 'Seu tamanho é: <strong>' . $_FILES[ 'arquivo' ][ 'size' ] . '</strong> Bytes<br /><br />';
+  */
+    $arquivo_tmp = $_FILES[ 'arquivo' ][ 'tmp_name' ];
+    $nome = $_FILES[ 'arquivo' ][ 'name' ];
+ 
+    // Pega a extensão
+    $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
+ 
+    // Converte a extensão para minúsculo
+    $extensao = strtolower ( $extensao );
+ 
+    // Somente imagens, .jpg;.jpeg;.gif;.png
+    // Aqui eu enfileiro as extensões permitidas e separo por ';'
+    // Isso serve apenas para eu poder pesquisar dentro desta String
+    if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ) {
+        // Cria um nome único para esta imagem
+        // Evita que duplique as imagens no servidor.
+        // Evita nomes com acentos, espaços e caracteres não alfanuméricos
+        $novoNome = uniqid ( time () ) . '.' . $extensao;
+ 
+        // Concatena a pasta com o nome
+        $destino = '../img/uploads_post/ ' . $novoNome;
+ 
+        // tenta mover o arquivo para o destino
+        if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ) {
+            /* Informações da foto que foi inserida */
+            /* echo 'Arquivo salvo com sucesso em : <strong>' . $destino . '</strong><br />';
+            echo ' < img src = "' . $destino . '" />'; */
+        }
+        else
+            echo 'Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita.<br />';
+    }
+    else
+        echo 'Você poderá enviar apenas arquivos "*.jpg;*.jpeg;*.gif;*.png"<br />';
+}
+else
+    echo 'Você não enviou nenhum arquivo!';
+
+
+
+
+Mostrar o Post com o titulo e com o Post da cidade
+
+<section class="titulo">
+        <h3><?php 
+                $cidade_url  = $_GET['cidade']; 
+                $dados = $p->buscarPost($cidade_url); 
+                        foreach($dados as $k => $v){
+                            echo $v['titulo_post'];
+                        }
+            
+        ?></h3>
+
+        <section class="area">
+            <div>
+                <img src="../img/lobo1.jpg" alt="foto-post">
+
+        
+            </div>
+            <div>
+                <p>
+                <?php 
+                    $dados = $p->buscarPost($cidade_url); 
+                        if(count($dados) > 0 ){
+                            foreach($dados as $k => $v){
+                                echo $v['conteudo_post'];
+                            }
+                        }
+                ?> 
+                </p>
+            </div>
+    </section>
+</section>
+
+
+Paginação com cidade_url
+
+public function paginacaoCidade($paginacao, $cidade_url){
+        try{
+            $html = '';
+            $limite = 2;
+            $inicio = ($limite * $paginacao) - $limite;
+            $ultima_pag = ceil(count($this->postGeral()) / $limite);
+
+            $cmd = $this->pdo->prepare("SELECT * FROM post :cidade_url LIMIT :inicio, :limite");
+            $cmd->bindParam(":inicio", $inicio, PDO::PARAM_INT);
+            $cmd->bindParam(":limite", $limite, PDO::PARAM_INT);
+            $cmd->bindParam(":cidade_url", $cidade_url, PDO::PARAM_INT);
+            $cmd->execute();
+
+            $html .= '<section class=titulo>';
+                foreach($cmd->fetchAll() as $res){
+                    if($res != 'id_posts'){
+                        $html .= '<h3>'.$res['titulo_post'].'</h3>';
+                        $html .= ' <section class=area>';
+                        $html .= '<div> <img src='.$res['foto_post'].'  alt=foto-post> </div>';
+                        $html .= '<div> <p id=scroll>'.$res['conteudo_post'].'</p> </div>';
+                        $html .= ' </section>';
+                    }
+                }
+               
+            $html .= '</section>';
+            if($paginacao > 1){
+                $html .= '<a class=a_pagina href="/testes%20aleatorios%20de%20tudo/testes%20aleatorios%20de%20tudo/Meus%20testes/Blog%20Walmir/views/post.php?pag='.($paginacao - 1).'">Anterior</a>';
+            }   
+            if($paginacao < $ultima_pag){
+                $html .= '<a class=a_pagina href="/testes%20aleatorios%20de%20tudo/testes%20aleatorios%20de%20tudo/Meus%20testes/Blog%20Walmir/views/post.php?pag='.($paginacao + 1).'">Proxima</a>';
+            } 
+            //$html .= 'Limite: '.$limite.' | Inicio: '.$inicio.' | Ultima pagina: '.$ultima_pag;
+            return $html;
+        }catch(PDOException $e){
+            echo "Erro ao listar Posts".$e->getMessage();
+        }    
+    }
+
+
+
+?>
+
+<!-- Incio Posts -->
+
+
+<?php 
+  
+
+    $cidade_url  = $_GET['cidade'];
+
+    $dados = $p->buscarPost($cidade_url);
+
+        foreach($dados as $k => $v){
+        if($k != 'id_posts'):
+    ?>
+                <section class='titulo'>
+                    <h3><?php echo $v['titulo_post']; ?></h3>
+                
+                    <section class='area'>
+                    <div>
+                        <img src="<?php echo $v['foto_post']; ?>" alt='foto-post'>
+                    </div>
+                <div>
+                    <?php echo "<p id='scroll'>".$v['conteudo_post']."</p>" ; ?>
+                </div>
+        </section>
+    </section>
+    
+    <?php 
+     
+        endif;
+        }
+    
+    ?>
+    
+
+
+<!-- Fim Posts -->

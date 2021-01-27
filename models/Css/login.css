@@ -1,0 +1,142 @@
+/*Começo do global*/
+*{
+    list-style: none;
+    text-decoration: none;
+}
+
+body, ul, li p   {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ccc;
+}
+
+h3 {
+    font-size: 20pt;
+    text-align: center;
+    margin: 10px;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+a{
+    color: white;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+/*Fim global*/
+
+/* Inicio Home Btn*/
+
+.menu_1{
+    background: wheat;
+    max-width: 1690px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.menu_1 ul li{
+    background: cornflowerblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+
+.menu_1 ul li a{
+    width: 80px;
+    line-height: 40px;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 6px;
+    color: black;
+
+}
+
+/* Fim Home Btn*/
+
+/* Inicio Formulario Login*/
+
+form{
+    max-width: 1700px;
+    max-height: 500px;
+    width: 60%;
+    height: 400px;
+    display: block;
+    background: cornsilk;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+form label{
+    max-width: 100px;
+    width: 90%;
+    font-size: 20pt;
+    display: grid;
+    margin: 0 auto;
+    padding: 20px;
+    justify-content: center;
+}
+
+form input{
+    max-width: 300px;
+    width: 90%;
+    line-height: 30px;
+    display: grid;
+    margin: 0 auto;
+}
+
+form button{
+    max-width: 300px;
+    width: 90%;
+    font-size: 20pt;
+    line-height: 30px;
+    display: grid;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+/* Fim Formulario Login */
+
+/* Incio Footer */
+
+footer{
+    max-width: 1710px;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    background: #1d1e20;
+    color: white;
+    margin-top: 190px;
+    line-height: 80px;
+}
+
+#footer p{
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* Footer*/
+
+/* Inicio media query*/
+@media(max-width : 860px){
+    
+}
+
+@media(max-width : 690px){
+   
+}
+/* Fim media query*/

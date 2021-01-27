@@ -1,0 +1,157 @@
+/*Começo do global*/
+*{
+    list-style: none;
+    text-decoration: none;
+}
+
+body, ul, li p   {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    text-align: center;
+    margin: 10px;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+a{
+    color: white;
+}
+
+/* Incio Botão*/
+.menu_1{
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    background: blanchedalmond;
+    line-height: 40px;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.menu_1 a{
+    color: black;
+}
+
+/* Fim Botão*/
+
+/* Incio form*/
+
+form{
+    width: 90%;
+    max-width: 1690px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background: #ccc;
+}
+
+form label,input,select, button{
+    max-width: 310px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+form > div:nth-child(1){
+    display: grid;
+    grid-template-columns: 100px 100px;
+    justify-content: center;
+}
+
+form > div:nth-child(2){
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+form textarea{
+    max-width: 700px;
+    max-height: 700px;
+    width: 90%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+form button{
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background: blanchedalmond;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 6px;
+    border: none;
+    
+}
+
+/* Fim form*/
+
+/* Inicio menu-2*/
+nav{
+    max-width: 1690px;
+    width: 99%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background: blanchedalmond;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    box-sizing: border-box;
+    padding: 5px;
+}
+nav ul li{
+    display: block;
+    margin: 10px;
+    background: cornflowerblue;
+}
+nav ul li a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #000;
+    padding: 5px;
+    margin: 5px;
+}
+/* Fim menu-2*/
+
+
+/* Incio Footer*/
+footer{
+    background: black;
+    line-height: 40px;
+    padding: 10px;
+    margin: 5px;
+    
+}
+
+footer p{
+    color: white;
+}
+
+/* Fim Footer*/
+
+@media(max-width: 981px){
+    nav{
+        max-width: 400px;
+        width: 90%;
+        display: block;
+        margin-top: 10px;
+        
+    }
+}
+/* Fim media query*/
